@@ -52,7 +52,9 @@ class _WeatherAppState extends State<WeatherApp> {
   void refreshApp() {
     if (kDebugMode) {
       print("Refreshing");
-      setState(() {});
+      setState(() {
+        weather = getWeather();
+      });
     }
   }
 
@@ -102,12 +104,9 @@ class _WeatherAppState extends State<WeatherApp> {
             final currentHumidity = currentData['main']['humidity'];
             final currentWindSpeed = currentData['wind']['speed'];
 
-            // final forcastList = data['list'];
-            // logger(forcastList);
-
             String formatTime(String date) {
               DateTime time = DateTime.parse(date);
-              var res = DateFormat.Hm().format(time);
+              var res = DateFormat.j().format(time);
 
               return res;
             }
@@ -163,7 +162,7 @@ class _WeatherAppState extends State<WeatherApp> {
                   ),
                   const SizedBox(height: 20),
                   SizedBox(
-                    height: 140,
+                    height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
