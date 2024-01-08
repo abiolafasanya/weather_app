@@ -8,6 +8,7 @@ import 'package:weather_app/screen/components/forcast_card.dart';
 import 'package:weather_app/screen/components/forcast_info_card.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:weather_app/secret.dart';
 
 class WeatherApp extends StatefulWidget {
   const WeatherApp({super.key});
@@ -26,10 +27,9 @@ class _WeatherAppState extends State<WeatherApp> {
   }
 
   Future<Map<String, dynamic>> getWeather() async {
-    String? weatherKey = "3a993ab07664d754888a4b59e4765067";
     String query = "Nigeria";
     String endpoint =
-        "https://api.openweathermap.org/data/2.5/forecast?q=$query&appid=$weatherKey";
+        "https://api.openweathermap.org/data/2.5/forecast?q=$query&appid=$weatherApiKey";
     try {
       final res = await http.get(Uri.parse(endpoint));
       final data = jsonDecode(res.body);

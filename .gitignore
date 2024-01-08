@@ -45,3 +45,4 @@ app.*.map.json
 # my secrets and environments
 secret.js
 .env
+lib/secret.dart
